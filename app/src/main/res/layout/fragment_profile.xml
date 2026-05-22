@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background_t2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Профиль"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="24dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="304dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/card_background"
+                android:elevation="4dp"
+                android:orientation="vertical"
+                android:backgroundTint="#32324D"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:text="Об удмуртском языке"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_speakers_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="Носителей языка: ~300 000"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_fact_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Заголовок факта"
+                    android:textColor="@color/clr2"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/fact_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:lineSpacingMultiplier="1.2"
+                            android:text="Содержание интересного факта..."
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </ScrollView>
+
+                <Button
+                    android:id="@+id/btn_next_fact"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="Следующий факт"
+                    android:textColor="@color/clr2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_background"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#32324D"
+                android:elevation="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Мой прогресс"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="12dp" />
+
+                <ProgressBar
+                    android:id="@+id/progress_overall"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:progress="0"
+                    android:max="100"
+                    android:progressTint="#6750A4"
+                    android:progressBackgroundTint="#E0E0E0"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tv_progress_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0%"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#6750A4"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tv_games_played"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Игр сыграно: 0"
+                    android:textSize="14sp"
+                    android:textColor="#666666" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#32324D"
+                android:orientation="vertical"
+                android:background="@drawable/card_background"
+                android:padding="16dp"
+                android:elevation="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Аккаунт"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ученик удмуртского"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/btn_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#00BFFF"
+                    android:text="Настройки"
+                    android:layout_marginTop="8dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
