@@ -30,7 +30,7 @@ public class Main_menu extends AppCompatActivity {
             return insets;
         });
 
-        setfragment(new Education());
+        SetFragment.setFragment(getSupportFragmentManager(),new Education());
 
 
         CardView education = findViewById(R.id.educCardView);
@@ -40,29 +40,24 @@ public class Main_menu extends AppCompatActivity {
         education.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setfragment(new Education());
+                SetFragment.setFragment(getSupportFragmentManager(),new Education());
             }
         });
 
         game.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setfragment(new game());
+                SetFragment.setFragment(getSupportFragmentManager(),new game());
             }
         });
 
         prof.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setfragment(new ProfileFragment());
+                SetFragment.setFragment(getSupportFragmentManager(),new ProfileFragment());
             }
         });
     }
 
-    public void setfragment(Fragment fragment) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.mainframe, fragment);
-        ft.addToBackStack(null);
-        ft.commit();
-    }
+
 }

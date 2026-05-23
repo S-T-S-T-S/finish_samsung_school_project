@@ -67,23 +67,18 @@ public class game extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setfragment(new SelectTranslation());
+                SetFragment.setFragment(getParentFragmentManager(),new SelectTranslation());
             }
         });
         CardView game_true = v.findViewById(R.id.buttonTrueFalse);
         game_true.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setfragment(new GameTrueFalse());
+                SetFragment.setFragment(getParentFragmentManager(),new GameTrueFalse());
             }
         });
         return v;
     }
 
-    private void setfragment(Fragment fragment) {
-        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-        ft.replace(R.id.mainframe, fragment);
-        ft.addToBackStack(null);
-        ft.commit();
-    }
+
 }

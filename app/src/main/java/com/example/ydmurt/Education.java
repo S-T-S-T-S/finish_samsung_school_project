@@ -89,7 +89,7 @@ public class Education extends Fragment {
         lessons.add(new Lesson("Цвета", R.mipmap.colors));
         lessons.add(new Lesson("Ягоды", R.mipmap.jagoda));
         lessons.add(new Lesson("Фразы", R.mipmap.phrases));
-        lessonAdapter adapter = new lessonAdapter(lessons);
+        lessonAdapter adapter = new lessonAdapter(lessons, getParentFragmentManager(),requireContext());
         recyclerView.setAdapter(adapter);
 //
 //
@@ -129,10 +129,4 @@ public class Education extends Fragment {
         return view;
     }
 
-    private void setfragment(Fragment fragment) {
-        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-        ft.replace(R.id.mainframe, fragment);
-        ft.addToBackStack(null);
-        ft.commit();
-    }
 }

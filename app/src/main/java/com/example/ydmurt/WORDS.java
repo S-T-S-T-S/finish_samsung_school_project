@@ -53,61 +53,61 @@ public class WORDS {
     ArrayList<ArrayList<String>> Numbers = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("одӥг");
-            add("1");
+            add("один");
             add("[оди́г]");
             add("одӥг");
         }});
         add(new ArrayList<String>() {{
             add("кык");
-            add("2");
+            add("два");
             add("[кык]");
             add("кык");
         }});
         add(new ArrayList<String>() {{
             add("куинь");
-            add("3");
+            add("три");
             add("[куи́нь]");
             add("куинь");
         }});
         add(new ArrayList<String>() {{
             add("ньыль");
-            add("4");
+            add("четыре");
             add("[ньыль]");
             add("ньыль");
         }});
         add(new ArrayList<String>() {{
             add("вить");
-            add("5");
+            add("пять");
             add("[вить]");
             add("вить");
         }});
         add(new ArrayList<String>() {{
             add("куать");
-            add("6");
+            add("шесть");
             add("[куа́ть]");
             add("куать");
         }});
         add(new ArrayList<String>() {{
             add("сизьым");
-            add("7");
+            add("семь");
             add("[сизьым]");
             add("сизьым");
         }});
         add(new ArrayList<String>() {{
             add("тямыс");
-            add("8");
+            add("восемь");
             add("[тямы́с]");
             add("тямыс");
         }});
         add(new ArrayList<String>() {{
             add("укмыс");
-            add("9");
+            add("девять");
             add("[укмы́с]");
             add("укмыс");
         }});
         add(new ArrayList<String>() {{
             add("дас");
-            add("10");
+            add("десять");
             add("[дас]");
             add("дас");
         }});
@@ -575,8 +575,9 @@ public class WORDS {
         add(Berries);
         add(Phrases);
     }};
-    public ArrayList<ArrayList<ArrayList<String>>>getWords(){
-     return words;
+
+    public ArrayList<ArrayList<ArrayList<String>>> getWords() {
+        return words;
     }
 }
 

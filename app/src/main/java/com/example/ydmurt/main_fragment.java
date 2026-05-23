@@ -67,22 +67,17 @@ public class main_fragment extends Fragment {
         education.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setfragment(new Education());
+                SetFragment.setFragment(getParentFragmentManager(),new Education());
             }
         });
         game.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setfragment(new game());
+                SetFragment.setFragment(getParentFragmentManager(),new game());
             }
         });
         return view;
     }
 
-    private void setfragment(Fragment fragment) {
-        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-        ft.replace(R.id.mainframe, fragment);
-        ft.addToBackStack(null);
-        ft.commit();
-    }
+
 }
