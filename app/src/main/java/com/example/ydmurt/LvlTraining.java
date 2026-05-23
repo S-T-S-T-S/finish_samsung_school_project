@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ydmurt.adapter.wordAdapter;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link LvlTraining#newInstance} factory method to
@@ -70,6 +72,7 @@ public class LvlTraining extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         adapter = new wordAdapter(myId);
         recyclerView.setAdapter(adapter);
+
         return v;
     }
 }

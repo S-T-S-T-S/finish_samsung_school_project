@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +37,7 @@ public class GameTrueFalse extends Fragment {
     private TextView tvScore;
     private ProgressBar progressBar;
 
-    private Words words;
+    private WORDS words;
     private ArrayList<ArrayList<String>> allWords;
     private Random random;
     private int score = 0;
@@ -69,7 +68,7 @@ public class GameTrueFalse extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        words = new Words();
+        words = new WORDS();
         random = new Random();
         allWords = new ArrayList<>();
 

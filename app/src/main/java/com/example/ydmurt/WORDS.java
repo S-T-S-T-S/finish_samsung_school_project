@@ -2,10 +2,7 @@ package com.example.ydmurt;
 
 import java.util.ArrayList;
 
-
-import java.util.ArrayList;
-
-public class Words {
+public class WORDS {
 
     ArrayList<ArrayList<String>> Hello = new ArrayList<>() {{
         add(new ArrayList<String>() {{
@@ -578,6 +575,8 @@ public class Words {
         add(Berries);
         add(Phrases);
     }};
-
+    public ArrayList<ArrayList<ArrayList<String>>>getWords(){
+     return words;
+    }
 }
 

@@ -1,15 +1,21 @@
 package com.example.ydmurt;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.example.ydmurt.adapter.lessonAdapter;
+import com.example.ydmurt.adapter.wordAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,6 +36,8 @@ public class Education extends Fragment {
     int id;
     private String mParam1;
     private String mParam2;
+    lessonAdapter adapter;
+    RecyclerView recyclerView;
 
     public Education() {
         // Required empty public constructor
@@ -62,44 +70,61 @@ public class Education extends Fragment {
         }
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_education, container, false);
-
-
-        b1 = view.findViewById(R.id.b1);
-        b2 = view.findViewById(R.id.b2);
-        b3 = view.findViewById(R.id.b3);
-        b4 = view.findViewById(R.id.b4);
-        b5 = view.findViewById(R.id.b5);
-        b6 = view.findViewById(R.id.b6);
-        b7 = view.findViewById(R.id.b7);
-        b8 = view.findViewById(R.id.b8);
-        b9 = view.findViewById(R.id.b9);
-        b10 = view.findViewById(R.id.b10);
-        b11 = view.findViewById(R.id.b11);
-        ArrayList<CardView> cardViews = new ArrayList<CardView>(Arrays.asList(b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11));
-        for (CardView i : cardViews) {
-            i.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String name = getResources().getResourceEntryName(i.getId());
-                    if (name.length() == 3) {
-                         id = Character.getNumericValue(name.charAt(name.length() - 2)) * 10 + Character.getNumericValue(name.charAt(name.length() - 1));
-
-                    } else {
-                         id = Character.getNumericValue(name.charAt(name.length() - 1));
-                    }
-                    LvlTraining lvlTraining = new LvlTraining();
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("id", id - 1);
-                    lvlTraining.setArguments(bundle);
-
-                    setfragment(lvlTraining);
-                }
-            });
-        }
+        recyclerView = view.findViewById(R.id.receclerViewlesson);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        ArrayList<Lesson> lessons = new ArrayList<>();
+        lessons.add(new Lesson("Вежливые обращения", R.mipmap.ladoshka));
+        lessons.add(new Lesson("Числа", R.mipmap.numbers));
+        lessons.add(new Lesson("Дикие животные", R.mipmap.dikiy_animal));
+        lessons.add(new Lesson("Домашние животные", R.mipmap.home_animal));
+        lessons.add(new Lesson("Еда", R.mipmap.eat));
+        lessons.add(new Lesson("Одежда", R.mipmap.cloths));
+        lessons.add(new Lesson("Моя семья", R.mipmap.family));
+        lessons.add(new Lesson("Овощи", R.mipmap.vegetabels));
+        lessons.add(new Lesson("Цвета", R.mipmap.colors));
+        lessons.add(new Lesson("Ягоды", R.mipmap.jagoda));
+        lessons.add(new Lesson("Фразы", R.mipmap.phrases));
+        lessonAdapter adapter = new lessonAdapter(lessons);
+        recyclerView.setAdapter(adapter);
+//
+//
+//        b1 = view.findViewById(R.id.b1);
+//        b2 = view.findViewById(R.id.b2);
+//        b3 = view.findViewById(R.id.b3);
+//        b4 = view.findViewById(R.id.b4);
+//        b5 = view.findViewById(R.id.b5);
+//        b6 = view.findViewById(R.id.b6);
+//        b7 = view.findViewById(R.id.b7);
+//        b8 = view.findViewById(R.id.b8);
+//        b9 = view.findViewById(R.id.b9);
+//        b10 = view.findViewById(R.id.b10);
+//        b11 = view.findViewById(R.id.b11);
+//        ArrayList<CardView> cardViews = new ArrayList<CardView>(Arrays.asList(b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11));
+//        for (CardView i : cardViews) {
+//            i.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    String name = getResources().getResourceEntryName(i.getId());
+//                    if (name.length() == 3) {
+//                         id = Character.getNumericValue(name.charAt(name.length() - 2)) * 10 + Character.getNumericValue(name.charAt(name.length() - 1));
+//
+//                    } else {
+//                         id = Character.getNumericValue(name.charAt(name.length() - 1));
+//                    }
+//                    LvlTraining lvlTraining = new LvlTraining();
+//                    Bundle bundle = new Bundle();
+//                    bundle.putInt("id", id - 1);
+//                    lvlTraining.setArguments(bundle);
+//
+//                    setfragment(lvlTraining);
+//                }
+//            });
+//        }
 
         return view;
     }

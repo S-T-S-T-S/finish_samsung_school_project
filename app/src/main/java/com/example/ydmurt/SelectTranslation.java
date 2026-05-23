@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -112,7 +111,7 @@ public class SelectTranslation extends Fragment {
     private String upt(View view) {
         Random random = new Random();
         TextView udm = view.findViewById(R.id.YdmurtTrans);
-        ArrayList<ArrayList<ArrayList<String>>> words = new Words().words;
+        ArrayList<ArrayList<ArrayList<String>>> words = new WORDS().words;
         ArrayList<ArrayList<String>> cat = words.get(random.nextInt(words.size() - 1));
         int name_id = random.nextInt(cat.size() - 1);
         ArrayList<String> name = cat.get(name_id);

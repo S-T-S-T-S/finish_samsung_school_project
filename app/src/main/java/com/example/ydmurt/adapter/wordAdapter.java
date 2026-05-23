@@ -1,4 +1,4 @@
-package com.example.ydmurt;
+package com.example.ydmurt.adapter;
 
 
 import android.view.LayoutInflater;
@@ -8,11 +8,14 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ydmurt.R;
+import com.example.ydmurt.WORDS;
+
 import java.util.ArrayList;
 
 public class wordAdapter extends RecyclerView.Adapter<wordAdapter.ViewHolder> {
 
-    ArrayList<ArrayList<ArrayList<String>>> words = new Words().words;
+    ArrayList<ArrayList<ArrayList<String>>> words = new WORDS().getWords();
 
     private Integer id;
 
