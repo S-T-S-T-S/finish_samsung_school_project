@@ -1,4 +1,4 @@
-package com.example.ydmurt;
+package com.example.ydmurt.data;
 
 public class initFacts {
 
@@ -37,4 +37,10 @@ public class initFacts {
             "Сегодня язык преподаётся в школах и университетах, выходят газеты и книги, работают радио и телевидение."
     };
 
+    public String[] getFacts() {
+        return facts;
+    }
+    public String[] getFactTitles() {
+        return factTitles;
+    }
 }

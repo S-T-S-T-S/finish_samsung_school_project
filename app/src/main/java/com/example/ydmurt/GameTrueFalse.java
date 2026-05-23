@@ -17,6 +17,7 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 
+import com.example.ydmurt.data.WORDS;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
@@ -86,7 +87,7 @@ public class GameTrueFalse extends Fragment {
         btnTrue = view.findViewById(R.id.button_true);
         btnFalse = view.findViewById(R.id.button_false);
         tvScore = view.findViewById(R.id.tv_score);
-        progressBar = view.findViewById(R.id.progressBar);
+        progressBar = view.findViewById(R.id.progressBarTest);
         progressBar.setProgress(0);
         btnTrue.setOnClickListener(v -> checkAnswer(true));
         btnFalse.setOnClickListener(v -> checkAnswer(false));
@@ -95,18 +96,11 @@ public class GameTrueFalse extends Fragment {
 
         return view;
     }
+
     private void loadAllWords() {
-        allWords.addAll(words.Hello);
-        allWords.addAll(words.Numbers);
-        allWords.addAll(words.WildAnimals);
-        allWords.addAll(words.DomesticAnimals);
-        allWords.addAll(words.Food);
-        allWords.addAll(words.Clothes);
-        allWords.addAll(words.Family);
-        allWords.addAll(words.Vegetables);
-        allWords.addAll(words.Colors);
-        allWords.addAll(words.Berries);
-        allWords.addAll(words.Phrases);
+        for (ArrayList<ArrayList<String>> i : words.getWords()) {
+            allWords.addAll(i);
+        }
     }
 
     private void generateNewQuestion() {
@@ -160,9 +154,9 @@ public class GameTrueFalse extends Fragment {
 
     private void updateScore() {
         tvScore.setText("Счёт: " + score + "/" + totalQuestions);
-        progressBar.setProgress((int) (((float) (score)/(float)(totalQuestions))*100));
+        progressBar.setProgress((int) (((float) (score) / (float) (totalQuestions)) * 100));
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            progressBar.setProgress((int) (((float) (score)/(float)(totalQuestions))*100), true);
+            progressBar.setProgress((int) (((float) (score) / (float) (totalQuestions)) * 100), true);
         }
     }
 

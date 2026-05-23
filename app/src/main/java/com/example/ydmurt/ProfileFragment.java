@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.ydmurt.data.initFacts;
 
 import java.util.Random;
 
@@ -71,16 +71,16 @@ public class ProfileFragment extends Fragment {
         TextView tit_interest = v.findViewById(R.id.tv_fact_title);
 
         initFacts facts = new initFacts();
-        interest.setText(facts.facts[0]);
+        interest.setText(facts.getFacts()[0]);
         Button button=v.findViewById(R.id.btn_next_fact);
 
-        tit_interest.setText(facts.factTitles[0]);
+        tit_interest.setText(facts.getFactTitles()[0]);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i=random.nextInt(facts.facts.length-1);
-                interest.setText(facts.facts[i]);
-                tit_interest.setText(facts.factTitles[i]);
+                int i=random.nextInt(facts.getFacts().length-1);
+                interest.setText(facts.getFacts()[i]);
+                tit_interest.setText(facts.getFactTitles()[i]);
             }
         });
         return v;

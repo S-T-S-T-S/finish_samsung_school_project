@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ydmurt.R;
-import com.example.ydmurt.WORDS;
+import com.example.ydmurt.data.WORDS;
 
 import java.util.ArrayList;
 

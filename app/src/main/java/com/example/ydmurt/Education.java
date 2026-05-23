@@ -31,7 +31,6 @@ public class Education extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    CardView b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11;
     // TODO: Rename and change types of parameters
     int id;
     private String mParam1;
@@ -91,40 +90,7 @@ public class Education extends Fragment {
         lessons.add(new Lesson("Фразы", R.mipmap.phrases));
         lessonAdapter adapter = new lessonAdapter(lessons, getParentFragmentManager(),requireContext());
         recyclerView.setAdapter(adapter);
-//
-//
-//        b1 = view.findViewById(R.id.b1);
-//        b2 = view.findViewById(R.id.b2);
-//        b3 = view.findViewById(R.id.b3);
-//        b4 = view.findViewById(R.id.b4);
-//        b5 = view.findViewById(R.id.b5);
-//        b6 = view.findViewById(R.id.b6);
-//        b7 = view.findViewById(R.id.b7);
-//        b8 = view.findViewById(R.id.b8);
-//        b9 = view.findViewById(R.id.b9);
-//        b10 = view.findViewById(R.id.b10);
-//        b11 = view.findViewById(R.id.b11);
-//        ArrayList<CardView> cardViews = new ArrayList<CardView>(Arrays.asList(b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11));
-//        for (CardView i : cardViews) {
-//            i.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    String name = getResources().getResourceEntryName(i.getId());
-//                    if (name.length() == 3) {
-//                         id = Character.getNumericValue(name.charAt(name.length() - 2)) * 10 + Character.getNumericValue(name.charAt(name.length() - 1));
-//
-//                    } else {
-//                         id = Character.getNumericValue(name.charAt(name.length() - 1));
-//                    }
-//                    LvlTraining lvlTraining = new LvlTraining();
-//                    Bundle bundle = new Bundle();
-//                    bundle.putInt("id", id - 1);
-//                    lvlTraining.setArguments(bundle);
-//
-//                    setfragment(lvlTraining);
-//                }
-//            });
-//        }
+
 
         return view;
     }

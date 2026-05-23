@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ydmurt.data.WORDS;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -74,7 +76,7 @@ public class SelectTranslation extends Fragment {
         ProgressBar progressBar=view.findViewById(R.id.progress);
         TextView textView = view.findViewById(R.id.translScore);
         textView.setText("Правильно"+score + "/" + all);
-        progressBar.setProgress(0); // Установить 50%
+        progressBar.setProgress(0);
 
 
         answer = upt(view);
@@ -111,7 +113,7 @@ public class SelectTranslation extends Fragment {
     private String upt(View view) {
         Random random = new Random();
         TextView udm = view.findViewById(R.id.YdmurtTrans);
-        ArrayList<ArrayList<ArrayList<String>>> words = new WORDS().words;
+        ArrayList<ArrayList<ArrayList<String>>> words = new WORDS().getWords();
         ArrayList<ArrayList<String>> cat = words.get(random.nextInt(words.size() - 1));
         int name_id = random.nextInt(cat.size() - 1);
         ArrayList<String> name = cat.get(name_id);

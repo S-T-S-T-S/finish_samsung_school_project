@@ -1,4 +1,4 @@
-package com.example.ydmurt;
+package com.example.ydmurt.data;
 
 import java.util.ArrayList;
 
@@ -578,6 +578,9 @@ public class WORDS {
 
     public ArrayList<ArrayList<ArrayList<String>>> getWords() {
         return words;
+    }
+    public ArrayList<ArrayList<String>> getSelectwords(int id) {
+        return words.get(id);
     }
 }
 
