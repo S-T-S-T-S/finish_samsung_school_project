@@ -68,13 +68,13 @@ public class MainActivity2 extends AppCompatActivity {
                     } else {
                         User newUser = new User(email, hashed,0);
                         db.userDao().insert(newUser);
-
                         runOnUiThread(() -> {
                             SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
 
                             prefs.edit()
-                                    .putInt("user_id", newUser.id)
+                                    .putInt("user_id", db.userDao().getUserByEmail(email).id)
                                     .apply();
+
                             Toast.makeText(MainActivity2.this, "Регистрация успешна!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MainActivity2.this, Main_menu.class);
                             startActivity(intent);

@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
                             if (BCrypt.checkpw(inputPassword, user.passwordHash)) {
                                 SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
-
                                 prefs.edit()
                                         .putInt("user_id", user.id)
                                         .apply();
