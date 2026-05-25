@@ -1,10 +1,11 @@
 package com.example.ydmurt.data;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class WORDS {
 
-    ArrayList<ArrayList<String>> Hello = new ArrayList<>() {{
+    static ArrayList<ArrayList<String>> Hello = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("ӟечбуресь");
             add("здравствуйте");
@@ -50,7 +51,7 @@ public class WORDS {
     }};
 
     // Числа
-    ArrayList<ArrayList<String>> Numbers = new ArrayList<>() {{
+    static ArrayList<ArrayList<String>> Numbers = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("одӥг");
             add("один");
@@ -114,7 +115,7 @@ public class WORDS {
     }};
 
     // Дикие животные
-    ArrayList<ArrayList<String>> WildAnimals = new ArrayList<>() {{
+    static ArrayList<ArrayList<String>> WildAnimals = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("гондыр");
             add("медведь");
@@ -166,7 +167,7 @@ public class WORDS {
     }};
 
     // Домашние животные
-    ArrayList<ArrayList<String>> DomesticAnimals = new ArrayList<>() {{
+    static ArrayList<ArrayList<String>> DomesticAnimals = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("курка");
             add("индейка");
@@ -236,7 +237,7 @@ public class WORDS {
     }};
 
     // Продукты, еда
-    ArrayList<ArrayList<String>> Food = new ArrayList<>() {{
+    static ArrayList<ArrayList<String>> Food = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("нянь");
             add("хлеб");
@@ -300,7 +301,7 @@ public class WORDS {
     }};
 
     // Одежда
-    ArrayList<ArrayList<String>> Clothes = new ArrayList<>() {{
+    static ArrayList<ArrayList<String>> Clothes = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("дэрем");
             add("рубаха, сорочка, платье");
@@ -322,7 +323,7 @@ public class WORDS {
     }};
 
     // Моя семья
-    ArrayList<ArrayList<String>> Family = new ArrayList<>() {{
+    static ArrayList<ArrayList<String>> Family = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("анай");
             add("мама");
@@ -398,7 +399,7 @@ public class WORDS {
     }};
 
     // Овощи
-    ArrayList<ArrayList<String>> Vegetables = new ArrayList<>() {{
+    static ArrayList<ArrayList<String>> Vegetables = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("сугон");
             add("лук");
@@ -432,7 +433,7 @@ public class WORDS {
     }};
 
     // Цвета
-    ArrayList<ArrayList<String>> Colors = new ArrayList<>() {{
+    static ArrayList<ArrayList<String>> Colors = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("тӧдьы");
             add("белый");
@@ -478,7 +479,7 @@ public class WORDS {
     }};
 
     // Ягоды
-    ArrayList<ArrayList<String>> Berries = new ArrayList<>() {{
+    static ArrayList<ArrayList<String>> Berries = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("шупу");
             add("калина");
@@ -518,7 +519,7 @@ public class WORDS {
     }};
 
     // Фразы
-    ArrayList<ArrayList<String>> Phrases = new ArrayList<>() {{
+    static ArrayList<ArrayList<String>> Phrases = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("Мынам воже потэ");
             add("Я злюсь");
@@ -562,7 +563,7 @@ public class WORDS {
             add("Мон уг валаськы");
         }});
     }};
-    ArrayList<ArrayList<ArrayList<String>>> words = new ArrayList<>() {{
+    static ArrayList<ArrayList<ArrayList<String>>> words = new ArrayList<>() {{
         add(Hello);
         add(Numbers);
         add(WildAnimals);
@@ -576,11 +577,14 @@ public class WORDS {
         add(Phrases);
     }};
 
-    public ArrayList<ArrayList<ArrayList<String>>> getWords() {
+    public static ArrayList<ArrayList<ArrayList<String>>> getWords() {
         return words;
     }
-    public ArrayList<ArrayList<String>> getSelectwords(int id) {
+    public static ArrayList<ArrayList<String>> getSelectwords(int id) {
         return words.get(id);
+    }
+    public static ArrayList<ArrayList<ArrayList<String>>> getPartWords(int id) {
+        return new ArrayList<> (words.subList(0,id));
     }
 }
 

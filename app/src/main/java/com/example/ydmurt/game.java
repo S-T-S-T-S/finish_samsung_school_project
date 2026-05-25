@@ -77,6 +77,13 @@ public class game extends Fragment {
                 SetFragment.setFragment(getParentFragmentManager(),new GameTrueFalse());
             }
         });
+        CardView game_Fix = v.findViewById(R.id.GameFixButton);
+        game_Fix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SetFragment.setFragment(getParentFragmentManager(),new GameFixFragment());
+            }
+        });
         return v;
     }
 

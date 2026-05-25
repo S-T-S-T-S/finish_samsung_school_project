@@ -146,6 +146,7 @@
                 </LinearLayout>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/GameFixButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -176,7 +177,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Собери слово"
+                                android:text="Исправь ошибку"
                                 android:textColor="#FFFFFF"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -185,7 +186,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
-                                android:text="расставь буквы в правильном порядке"
+                                android:text="Исправь ошибку в слове, написав правильно"
                                 android:textColor="#FF2D75"
                                 android:textSize="14sp" />
                         </LinearLayout>

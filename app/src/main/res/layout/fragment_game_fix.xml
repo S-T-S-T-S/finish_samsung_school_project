@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background_t2">
+
+    <!-- Прогресс -->
+    <ProgressBar
+        android:id="@+id/progressBarFix"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:progress="40"
+        android:progressTint="@color/clr2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Счет -->
+    <TextView
+        android:id="@+id/tvProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="3 из 10"
+        android:textColor="#DDDDDD"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/progressBarFix"
+        app:layout_constraintTop_toBottomOf="@id/progressBarFix" />
+
+    <!-- Карточка -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardWord"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        app:cardBackgroundColor="@color/card_background"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvProgress">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <!-- Неправильное слово -->
+            <TextView
+                android:id="@+id/tvWrongWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="гондри"
+                android:textColor="@color/text_primary"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <!-- Подсказка -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Исправьте слово"
+                android:textColor="@color/text_secondary"
+                android:textSize="15sp" />
+
+            <!-- Поле ввода -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="18dp"
+                app:boxCornerRadiusBottomStart="18dp"
+                app:boxCornerRadiusTopEnd="18dp"
+                app:boxCornerRadiusTopStart="18dp"
+                app:boxStrokeColor="@color/clr2">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editAnswer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Правильное слово"
+                    android:inputType="text"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Кнопка -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="28dp"
+                android:text="Проверить"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/clr2"
+                app:cornerRadius="18dp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tvFixRighbt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/cardWord" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.ydmurt;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -65,10 +66,15 @@ public class MainActivity2 extends AppCompatActivity {
                             Toast.makeText(MainActivity2.this, "Этот email уже занят", Toast.LENGTH_SHORT).show();
                         });
                     } else {
-                        User newUser = new User(email, hashed); // В будущем тут будет хеш
+                        User newUser = new User(email, hashed,0);
                         db.userDao().insert(newUser);
 
                         runOnUiThread(() -> {
+                            SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
+
+                            prefs.edit()
+                                    .putInt("user_id", newUser.id)
+                                    .apply();
                             Toast.makeText(MainActivity2.this, "Регистрация успешна!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(MainActivity2.this, Main_menu.class);
                             startActivity(intent);

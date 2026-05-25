@@ -1,6 +1,7 @@
 package com.example.ydmurt;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
+
+        int userId = prefs.getInt("user_id", -1);
+
+        if (userId != -1) {
+            Intent intent = new Intent(MainActivity.this, Main_menu.class);
+            startActivity(intent);
+        }
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -56,7 +66,11 @@ public class MainActivity extends AppCompatActivity {
                         if (user != null) {
 
                             if (BCrypt.checkpw(inputPassword, user.passwordHash)) {
+                                SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
 
+                                prefs.edit()
+                                        .putInt("user_id", user.id)
+                                        .apply();
                                 Toast.makeText(MainActivity.this, "Вход выполнен!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MainActivity.this, Main_menu.class);
                                 startActivity(intent);

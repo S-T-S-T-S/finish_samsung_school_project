@@ -71,6 +71,7 @@ public class lessonAdapter extends RecyclerView.Adapter<lessonAdapter.ViewHolder
                 lessons.get(position).getImage()
         );
         holder.num.setText(String.valueOf(position + 1));
+        
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

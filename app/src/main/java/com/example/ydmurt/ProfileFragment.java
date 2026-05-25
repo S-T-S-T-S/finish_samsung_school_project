@@ -1,5 +1,10 @@
 package com.example.ydmurt;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.ydmurt.data.AppDatabase;
 import com.example.ydmurt.data.initFacts;
 
 import java.util.Random;
@@ -69,18 +75,26 @@ public class ProfileFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         TextView interest = v.findViewById(R.id.fact_content);
         TextView tit_interest = v.findViewById(R.id.tv_fact_title);
-
         initFacts facts = new initFacts();
         interest.setText(facts.getFacts()[0]);
-        Button button=v.findViewById(R.id.btn_next_fact);
-
+        Button button = v.findViewById(R.id.btn_next_fact);
+        Button button1 = v.findViewById(R.id.btn_settings);
         tit_interest.setText(facts.getFactTitles()[0]);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i=random.nextInt(facts.getFacts().length-1);
+                int i = random.nextInt(facts.getFacts().length - 1);
                 interest.setText(facts.getFacts()[i]);
                 tit_interest.setText(facts.getFactTitles()[i]);
+            }
+        });
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences prefs = requireContext().getSharedPreferences("auth", MODE_PRIVATE);
+                prefs.edit().clear().apply();
+                Intent intent = new Intent(requireActivity(), MainActivity.class);
+                startActivity(intent);
             }
         });
         return v;

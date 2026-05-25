@@ -13,9 +13,11 @@ public class User {
     public String email;
 
     public String passwordHash;
+    public int levelEducation;
 
-    public User(@NonNull String email, String passwordHash) {
+    public User(@NonNull String email, String passwordHash, int levelEducation) {
         this.email = email;
         this.passwordHash = passwordHash;
+        this.levelEducation = levelEducation;
     }
 }

@@ -9,9 +9,10 @@ import androidx.room.RoomDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class}, version = 1)
+@Database(entities = {User.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
+
     public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(4);
     private static AppDatabase instance;
@@ -19,7 +20,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static synchronized AppDatabase getInstance(Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
-                            AppDatabase.class, "my_database")
+                            AppDatabase.class, "my_database").fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build();
         }

@@ -1,5 +1,7 @@
 package com.example.ydmurt;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +19,7 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 
+import com.example.ydmurt.data.AppDatabase;
 import com.example.ydmurt.data.WORDS;
 import com.google.android.material.card.MaterialCardView;
 
@@ -31,21 +34,15 @@ public class GameTrueFalse extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private TextView tvUdmurtWord;
-    private TextView tvRussianWord;
-    private MaterialCardView btnTrue;
-    private MaterialCardView btnFalse;
-    private TextView tvScore;
+    private TextView tvUdmurtWord,tvScore,tvRussianWord,textRight;
+    private MaterialCardView btnTrue,btnFalse;
     private ProgressBar progressBar;
 
-    private WORDS words;
+
     private ArrayList<ArrayList<String>> allWords;
     private Random random;
-    private int score = 0;
-    private int totalQuestions = 0;
-    private String currentUdmurtWord;
-    private String currentCorrectTranslation;
-    private String currentShownTranslation;
+    private int score = 0,totalQuestions = 0;
+    private String currentUdmurtWord,currentCorrectTranslation,currentShownTranslation;
     private boolean isCurrentCorrect;
 
     public GameTrueFalse() {
@@ -69,7 +66,6 @@ public class GameTrueFalse extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        words = new WORDS();
         random = new Random();
         allWords = new ArrayList<>();
 
@@ -88,6 +84,7 @@ public class GameTrueFalse extends Fragment {
         btnFalse = view.findViewById(R.id.button_false);
         tvScore = view.findViewById(R.id.tv_score);
         progressBar = view.findViewById(R.id.progressBarTest);
+        textRight=view.findViewById(R.id.textGameTrueFalseRight);
         progressBar.setProgress(0);
         btnTrue.setOnClickListener(v -> checkAnswer(true));
         btnFalse.setOnClickListener(v -> checkAnswer(false));
@@ -98,7 +95,7 @@ public class GameTrueFalse extends Fragment {
     }
 
     private void loadAllWords() {
-        for (ArrayList<ArrayList<String>> i : words.getWords()) {
+        for (ArrayList<ArrayList<String>> i : WORDS.getPartWords(AppDatabase.getInstance(requireActivity()).userDao().getUserById(requireActivity().getSharedPreferences("auth", MODE_PRIVATE).getInt("user_id", -1)).levelEducation + 1)) {
             allWords.addAll(i);
         }
     }
@@ -145,9 +142,9 @@ public class GameTrueFalse extends Fragment {
 
         if (correctAnswer) {
             score++;
-            showToast("✓ Правильно!", Toast.LENGTH_SHORT);
+            textRight.setText("✓ Правильно!");
         } else {
-            showToast("✗ Неправильно! Правильный перевод: " + currentCorrectTranslation, Toast.LENGTH_LONG);
+            textRight.setText("✗ Неправильно! Правильный перевод: " + currentCorrectTranslation);
         }
         generateNewQuestion();
     }
@@ -160,8 +157,4 @@ public class GameTrueFalse extends Fragment {
         }
     }
 
-
-    private void showToast(String message, int duration) {
-        Toast.makeText(getContext(), message, duration).show();
-    }
 }
