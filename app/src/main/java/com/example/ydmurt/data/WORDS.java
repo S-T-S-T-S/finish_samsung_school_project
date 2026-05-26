@@ -50,7 +50,7 @@ public class WORDS {
         }});
     }};
 
-    // Числа
+
     static ArrayList<ArrayList<String>> Numbers = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("одӥг");
@@ -114,7 +114,7 @@ public class WORDS {
         }});
     }};
 
-    // Дикие животные
+
     static ArrayList<ArrayList<String>> WildAnimals = new ArrayList<>() {{
         add(new ArrayList<String>() {{
             add("гондыр");

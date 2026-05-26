@@ -96,7 +96,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif"
-                            android:hint="почта"
+                            android:hint="Логин"
                             android:inputType="textEmailAddress"
                             android:textColor="#141515"
                             android:textColorHint="#999999" />
@@ -112,18 +112,7 @@
                         app:boxCornerRadiusTopEnd="12dp"
                         app:boxCornerRadiusTopStart="12dp"
                         app:boxStrokeColor="#141515"
-                        app:startIconTint="#141515">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editLoginReg"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif"
-                            android:hint="Логин"
-                            android:inputType="text"
-                            android:textColor="#141515"
-                            android:textColorHint="#999999" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                        app:startIconTint="#141515"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"

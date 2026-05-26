@@ -1,5 +1,8 @@
 package com.example.ydmurt;
 
+import static android.content.Context.MODE_PRIVATE;
+import static com.example.ydmurt.data.WORDS.getSelectwords;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.ydmurt.data.AppDatabase;
+import com.example.ydmurt.data.User;
 import com.example.ydmurt.data.WORDS;
 
 import java.util.ArrayList;
@@ -25,7 +30,8 @@ import java.util.Arrays;
 public class Test extends Fragment {
     int myId, countTest, count, right, currentIndex;
 
-
+    ArrayList<ArrayList<String>> selwordsYd;
+    ArrayList<ArrayList<String>> selwordsRu;
     ProgressBar progressBarTest;
     Button button;
     TextView wordText, progressTextTest;
@@ -34,12 +40,10 @@ public class Test extends Fragment {
     ArrayList<Integer> usedIndexesYd = new ArrayList<>();
     boolean isUdmurtToRussian;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
@@ -80,37 +84,37 @@ public class Test extends Fragment {
         Bundle bundle = this.getArguments();
         myId = bundle.getInt("id");
 
-        ArrayList<ArrayList<String>> selwords =
-                new WORDS().getSelectwords(myId);
+        ArrayList<ArrayList<String>> selwords = getSelectwords(myId);
 
         countTest = selwords.size() * 2;
         count = 0;
         right = 0;
 
         progressBarTest.setMax(countTest);
+        selwordsYd = new ArrayList<>();
+        selwordsRu = new ArrayList<>();
 
+        ArrayList<String> word;
+
+        for (ArrayList<String> words : selwords) {
+            selwordsYd.add(new ArrayList<>(words));
+            selwordsRu.add(new ArrayList<>(words));
+        }
         nextQuestion(selwords);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String answer = editText.getText()
-                        .toString()
-                        .trim()
-                        .toLowerCase();
+                String answer = editText.getText().toString().trim().toLowerCase();
 
                 ArrayList<String> currentWord =
                         selwords.get(currentIndex);
 
                 String correctAnswer;
-
-                // если показываем удмуртское слово
-                // надо ответить по русски
                 if (isUdmurtToRussian) {
                     correctAnswer = currentWord.get(1).toLowerCase();
                 } else {
-                    // иначе наоборот
                     correctAnswer = currentWord.get(0).toLowerCase();
                 }
                 ArrayList<String> words =
@@ -129,14 +133,19 @@ public class Test extends Fragment {
 
                     wordText.setText("Тест завершён");
 
-                    progressTextTest.setText(
-                            "Правильных ответов "
-                                    + right + " из " + countTest
-                    );
+                    progressTextTest.setText("Правильных ответов " + right + " из " + countTest);
 
                     button.setEnabled(false);
-
+                    User user = AppDatabase.getInstance(requireContext()).userDao().getUserById(requireContext().getSharedPreferences("auth", MODE_PRIVATE).getInt("user_id", -1));
+                    if (myId == user.levelEducation && (right * 100 / countTest) > 10) {
+                        wordText.setText("Тест завершён. Открыт новый уровень");
+                        user.levelEducation++;
+                        AppDatabase.getInstance(requireContext()).userDao().update(user);
+                    } else {
+                        wordText.setText("Тест завершён. Новый уровень не разблокирован.");
+                    }
                 } else {
+
 
                     nextQuestion(selwords);
                 }
@@ -148,42 +157,37 @@ public class Test extends Fragment {
 
     private void nextQuestion(ArrayList<ArrayList<String>> selwords) {
 
-        if ((usedIndexesYd.size() + usedIndexesRu.size()) >= selwords.size() * 2) {
+        isUdmurtToRussian = Math.random() < 0.5;
+        ArrayList<String> word;
+        if ((selwordsYd.size() + selwordsRu.size()) == 0) {
             return;
         }
-        do {
-            currentIndex = (int) (Math.random() * selwords.size());
-        }
-        while (usedIndexesYd.contains(currentIndex) && usedIndexesRu.contains(currentIndex));
+        if ((isUdmurtToRussian || selwordsRu.isEmpty())&& !selwordsYd.isEmpty()) {
 
-        isUdmurtToRussian = Math.random() < 0.5;
-        if (isUdmurtToRussian) {
-
-            usedIndexesYd.add(currentIndex);
+            currentIndex = (int) (Math.random() * selwordsYd.size());
+            word = selwordsYd.remove(currentIndex);
         } else {
-            usedIndexesRu.add(currentIndex);
+
+            currentIndex = (int) (Math.random() * selwordsRu.size());
+            word = selwordsRu.remove(currentIndex);
+
+
         }
 
 
-        ArrayList<String> word = selwords.get(currentIndex);
-
         if (isUdmurtToRussian) {
-
             wordText.setText(word.get(0));
-
+            editText.setText(String.valueOf(word.get(1).charAt(0)));
         } else {
-
-
             wordText.setText(word.get(1));
+            editText.setText(String.valueOf(word.get(0).charAt(0)));
         }
 
         progressBarTest.setProgress(count);
 
-        progressTextTest.setText(
-                "Правильных ответов "
-                        + right + " из " + countTest
-        );
+        progressTextTest.setText("Правильных ответов " + right + " из " + countTest);
 
-        editText.setText("");
+
+
     }
 }

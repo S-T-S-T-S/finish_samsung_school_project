@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background_t2">
 
-    <!-- Прогресс -->
+
     <ProgressBar
         android:id="@+id/progressBarFix"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Счет -->
+
     <TextView
         android:id="@+id/tvProgress"
         android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="@id/progressBarFix"
         app:layout_constraintTop_toBottomOf="@id/progressBarFix" />
 
-    <!-- Карточка -->
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardWord"
         android:layout_width="0dp"
@@ -56,7 +56,7 @@
             android:orientation="vertical"
             android:padding="30dp">
 
-            <!-- Неправильное слово -->
+
             <TextView
                 android:id="@+id/tvWrongWord"
                 android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
                 android:textSize="34sp"
                 android:textStyle="bold" />
 
-            <!-- Подсказка -->
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 android:textColor="@color/text_secondary"
                 android:textSize="15sp" />
 
-            <!-- Поле ввода -->
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Кнопка -->
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonAnswer"
                 android:layout_width="match_parent"

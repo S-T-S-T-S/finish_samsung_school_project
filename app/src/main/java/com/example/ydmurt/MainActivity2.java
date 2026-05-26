@@ -23,7 +23,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class MainActivity2 extends AppCompatActivity {
     Button reg;
     MaterialButton toLog;
-    EditText etEmail, log, etPassword;
+    EditText etEmail, etPassword;
 
 
     @Override
@@ -38,7 +38,7 @@ public class MainActivity2 extends AppCompatActivity {
         });
         reg = findViewById(R.id.buttonReg);
         etEmail = findViewById(R.id.editGmailReg);
-        log = findViewById(R.id.editLoginReg);
+
         etPassword = findViewById(R.id.editTextTextPassword);
         toLog = findViewById(R.id.buttrett);
         reg.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +46,6 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 String email = etEmail.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
-
 
 
                 String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
@@ -66,7 +65,7 @@ public class MainActivity2 extends AppCompatActivity {
                             Toast.makeText(MainActivity2.this, "Этот email уже занят", Toast.LENGTH_SHORT).show();
                         });
                     } else {
-                        User newUser = new User(email, hashed,0);
+                        User newUser = new User(email, hashed, 0);
                         db.userDao().insert(newUser);
                         runOnUiThread(() -> {
                             SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);

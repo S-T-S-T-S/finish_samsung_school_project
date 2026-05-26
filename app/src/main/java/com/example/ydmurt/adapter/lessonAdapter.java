@@ -1,5 +1,9 @@
 package com.example.ydmurt.adapter;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import static com.example.ydmurt.R.color.status_expired;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -19,6 +23,7 @@ import com.example.ydmurt.LvlTraining;
 import com.example.ydmurt.R;
 import com.example.ydmurt.SetFragment;
 import com.example.ydmurt.Test;
+import com.example.ydmurt.data.AppDatabase;
 
 
 import java.util.ArrayList;
@@ -31,6 +36,7 @@ public class lessonAdapter extends RecyclerView.Adapter<lessonAdapter.ViewHolder
     Context context;
 
     FragmentManager fragmentManager;
+
     public lessonAdapter(ArrayList<Lesson> lessons,
                          FragmentManager fragmentManager, Context context) {
 
@@ -71,42 +77,50 @@ public class lessonAdapter extends RecyclerView.Adapter<lessonAdapter.ViewHolder
                 lessons.get(position).getImage()
         );
         holder.num.setText(String.valueOf(position + 1));
-        
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        int lvl=AppDatabase.getInstance(context).userDao().getUserById(context.getSharedPreferences("auth", MODE_PRIVATE).getInt("user_id", -1)).levelEducation;
+        if (position <=lvl ) {
+            holder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-                    builder.setTitle("Учить или Тест");
+                        builder.setTitle("Учить или Тест");
 
-                    builder.setPositiveButton("Тест", (dialog, which) -> {
-                        id = position;
-                        Test test = new Test();
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("id", id);
-                        test.setArguments(bundle);
+                        builder.setPositiveButton("Тест", (dialog, which) -> {
+                            id = position;
+                            Test test = new Test();
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("id", id);
+                            test.setArguments(bundle);
 
-                        SetFragment.setFragment(fragmentManager, test);
-                    });
+                            SetFragment.setFragment(fragmentManager, test);
+                        });
 
-                    builder.setNegativeButton("Учить", (dialog, which) -> {
-                        id = position;
-                        LvlTraining lvlTraining = new LvlTraining();
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("id", id);
-                        lvlTraining.setArguments(bundle);
+                        builder.setNegativeButton("Учить", (dialog, which) -> {
+                            id = position;
+                            LvlTraining lvlTraining = new LvlTraining();
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("id", id);
+                            lvlTraining.setArguments(bundle);
 
-                        SetFragment.setFragment(fragmentManager, lvlTraining);
-                    });
+                            SetFragment.setFragment(fragmentManager, lvlTraining);
+                        });
 
-                    builder.show();
+                        builder.show();
 
+                    }
                 }
+            });
+            if (position<lvl){
+                holder.num.setBackgroundResource(R.drawable.circle_completed);
             }
-        });
-    }
 
+        }
+        else {
+            holder.num.setBackgroundResource(R.drawable.circle_locked);
+        }
+    }
 
     @Override
     public int getItemCount() {

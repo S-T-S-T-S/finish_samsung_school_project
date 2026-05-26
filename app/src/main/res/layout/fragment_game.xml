@@ -36,7 +36,7 @@
                 android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
-                <!-- 步骤指示器 -->
+
                 <LinearLayout
                     android:layout_width="48dp"
                     android:layout_height="wrap_content"

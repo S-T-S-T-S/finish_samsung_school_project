@@ -97,7 +97,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif"
 
-                            android:hint="Почта"
+                            android:hint="Логин"
                             android:inputType="textEmailAddress"
                             android:textColor="#141515"
                             android:textColorHint="#999999" />
