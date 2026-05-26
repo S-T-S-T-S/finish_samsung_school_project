@@ -62,7 +62,7 @@ public class MainActivity2 extends AppCompatActivity {
 
                     if (existingUser != null) {
                         runOnUiThread(() -> {
-                            Toast.makeText(MainActivity2.this, "Этот email уже занят", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity2.this, "Этот логин уже занят", Toast.LENGTH_SHORT).show();
                         });
                     } else {
                         User newUser = new User(email, hashed, 0);
