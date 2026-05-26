@@ -32,7 +32,6 @@ public class wordAdapter extends RecyclerView.Adapter<wordAdapter.ViewHolder> {
             tvName = itemView.findViewById(R.id.tvName);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             start = itemView.findViewById(R.id.tvStart);
-            finish = itemView.findViewById(R.id.tvFin);
         }
     }
 
@@ -50,7 +49,6 @@ public class wordAdapter extends RecyclerView.Adapter<wordAdapter.ViewHolder> {
         holder.tvName.setText(w.get(0));
         holder.tvPrice.setText(String.valueOf(w.get(1)));
         holder.start.setText(String.valueOf(w.get(2)));
-        holder.finish.setText(String.valueOf(w.get(3)));
     }
 
     @Override

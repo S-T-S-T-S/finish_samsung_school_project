@@ -177,10 +177,10 @@ public class Test extends Fragment {
 
         if (isUdmurtToRussian) {
             wordText.setText(word.get(0));
-            editText.setText(String.valueOf(word.get(1).charAt(0)));
+            editText.setHint(String.valueOf(word.get(1).charAt(0)));
         } else {
             wordText.setText(word.get(1));
-            editText.setText(String.valueOf(word.get(0).charAt(0)));
+            editText.setHint(String.valueOf(word.get(0).charAt(0)));
         }
 
         progressBarTest.setProgress(count);
