@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.ydmurt.data.AppDatabase;
@@ -97,6 +98,11 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        ProgressBar progressBar=v.findViewById(R.id.progress_overall);
+        progressBar.setMax(100);
+        progressBar.setProgress((AppDatabase.getInstance(requireActivity()).userDao().getUserById(requireActivity().getSharedPreferences("auth", MODE_PRIVATE).getInt("user_id", -1)).levelEducation)*100/11);
+        TextView textView=v.findViewById(R.id.tv_progress_percent);
+        textView.setText(String.valueOf((AppDatabase.getInstance(requireActivity()).userDao().getUserById(requireActivity().getSharedPreferences("auth", MODE_PRIVATE).getInt("user_id", -1)).levelEducation)*100/11)+"%");
         return v;
     }
 

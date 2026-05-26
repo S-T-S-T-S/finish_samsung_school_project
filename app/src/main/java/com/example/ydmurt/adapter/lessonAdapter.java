@@ -77,8 +77,8 @@ public class lessonAdapter extends RecyclerView.Adapter<lessonAdapter.ViewHolder
                 lessons.get(position).getImage()
         );
         holder.num.setText(String.valueOf(position + 1));
-        int lvl=AppDatabase.getInstance(context).userDao().getUserById(context.getSharedPreferences("auth", MODE_PRIVATE).getInt("user_id", -1)).levelEducation;
-        if (position <=lvl ) {
+        int lvl = AppDatabase.getInstance(context).userDao().getUserById(context.getSharedPreferences("auth", MODE_PRIVATE).getInt("user_id", -1)).levelEducation;
+        if (position <= lvl) {
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -112,12 +112,11 @@ public class lessonAdapter extends RecyclerView.Adapter<lessonAdapter.ViewHolder
                     }
                 }
             });
-            if (position<lvl){
+            if (position < lvl) {
                 holder.num.setBackgroundResource(R.drawable.circle_completed);
             }
 
-        }
-        else {
+        } else {
             holder.num.setBackgroundResource(R.drawable.circle_locked);
         }
     }

@@ -139,14 +139,6 @@
                     android:textColor="#6750A4"
                     android:layout_marginBottom="8dp" />
 
-                <TextView
-                    android:id="@+id/tv_games_played"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Игр сыграно: 0"
-                    android:textSize="14sp"
-                    android:textColor="#666666" />
-
             </LinearLayout>
 
 
