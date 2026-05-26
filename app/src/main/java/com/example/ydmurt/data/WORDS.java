@@ -1,7 +1,6 @@
 package com.example.ydmurt.data;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class WORDS {
 
@@ -580,11 +579,13 @@ public class WORDS {
     public static ArrayList<ArrayList<ArrayList<String>>> getWords() {
         return words;
     }
+
     public static ArrayList<ArrayList<String>> getSelectwords(int id) {
         return words.get(id);
     }
+
     public static ArrayList<ArrayList<ArrayList<String>>> getPartWords(int id) {
-        return new ArrayList<> (words.subList(0,id));
+        return new ArrayList<>(words.subList(0, id));
     }
 }
 

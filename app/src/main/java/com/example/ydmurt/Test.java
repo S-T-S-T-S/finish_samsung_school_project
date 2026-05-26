@@ -39,7 +39,7 @@ public class Test extends Fragment {
     ArrayList<Integer> usedIndexesRu = new ArrayList<>();
     ArrayList<Integer> usedIndexesYd = new ArrayList<>();
     boolean isUdmurtToRussian;
-
+    ArrayList<String> word;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -94,7 +94,7 @@ public class Test extends Fragment {
         selwordsYd = new ArrayList<>();
         selwordsRu = new ArrayList<>();
 
-        ArrayList<String> word;
+
 
         for (ArrayList<String> words : selwords) {
             selwordsYd.add(new ArrayList<>(words));
@@ -108,20 +108,19 @@ public class Test extends Fragment {
 
                 String answer = editText.getText().toString().trim().toLowerCase();
 
-                ArrayList<String> currentWord =
-                        selwords.get(currentIndex);
 
                 String correctAnswer;
                 if (isUdmurtToRussian) {
-                    correctAnswer = currentWord.get(1).toLowerCase();
+                    correctAnswer = word.get(1).toLowerCase();
                 } else {
-                    correctAnswer = currentWord.get(0).toLowerCase();
+                    correctAnswer = word.get(0).toLowerCase();
                 }
                 ArrayList<String> words =
                         new ArrayList<>(Arrays.asList(correctAnswer.split(", ")));
                 if (words.contains(answer) || answer.equals(correctAnswer)) {
                     right++;
                 }
+
                 System.out.println(answer);
                 System.out.println(correctAnswer);
                 System.out.println(answer.contains(correctAnswer));
@@ -146,9 +145,11 @@ public class Test extends Fragment {
                     }
                 } else {
 
-
+                    editText.setText("");
                     nextQuestion(selwords);
                 }
+
+
             }
         });
 
@@ -158,11 +159,11 @@ public class Test extends Fragment {
     private void nextQuestion(ArrayList<ArrayList<String>> selwords) {
 
         isUdmurtToRussian = Math.random() < 0.5;
-        ArrayList<String> word;
+
         if ((selwordsYd.size() + selwordsRu.size()) == 0) {
             return;
         }
-        if ((isUdmurtToRussian || selwordsRu.isEmpty())&& !selwordsYd.isEmpty()) {
+        if ((isUdmurtToRussian || selwordsRu.isEmpty()) && !selwordsYd.isEmpty()) {
 
             currentIndex = (int) (Math.random() * selwordsYd.size());
             word = selwordsYd.remove(currentIndex);
@@ -186,7 +187,6 @@ public class Test extends Fragment {
         progressBarTest.setProgress(count);
 
         progressTextTest.setText("Правильных ответов " + right + " из " + countTest);
-
 
 
     }

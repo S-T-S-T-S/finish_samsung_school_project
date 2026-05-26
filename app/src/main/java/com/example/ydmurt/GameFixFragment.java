@@ -91,6 +91,7 @@ public class GameFixFragment extends Fragment {
                 } else {
                     textRight.setText("✗ Неправильно! Правильный перевод: " + rightWord);
                 }
+                editText.setText("");
                 nextWord();
             }
         });
